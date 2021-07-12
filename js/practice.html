@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Online JQuery Code Editor</title>
+
+  
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="./css1.css">
+</head>
+<body>
+
+  
+
+<!-- As a heading -->
+<nav class="navbar navbar-dark bg-dark">
+
+
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">JQuery</span>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <div style="display: flex; " class="code-area">
+      
+      <button type="button" class="btn btn-dark">HTML</button>
+      
+      <textarea id="htmlCode" placeholder="HTML Code" 
+                oninput="showPreview()"></textarea>
+      
+      <button type="button" class="btn btn-dark">CSS</button>
+      <textarea id="cssCode" placeholder="CSS Code" 
+                oninput="showPreview()"></textarea>
+      
+        <button type="button" class="btn btn-dark">JAVASCRIPT</button>
+      <textarea id="jsCode" placeholder="JavaScript Code" 
+                oninput="showPreview()"></textarea>       
+    </div>
+    </div>
+    <div class="col-5">
+      
+     <div class="preview-area">
+      
+      <button type="button" class="btn btn-dark" id="output1">OUTPUT</button>
+      <iframe id="preview-window"></iframe>
+    </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+   
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+
+
+
+  
+
+   
+</body>
+<script type="text/javascript" >
+  function run(){
+  var htmlCode = document.querySelector("#htmlCode").value;
+  var cssCode = "<style>" + document.querySelector("#cssCode").value + "</style>";
+  var jsCode = document.querySelector("#jsCode").value;
+  var frame = document.querySelector("#preview-window").contentWindow.document;
+
+  frame.contentDocument.body.innerHTML = htmlCode+cssCode;
+  frame.contentWindow.eval(jsCode);
+}
+
+
+
+  document.querySelector("#htmlCode").addEventListener("keyup",run);
+   document.querySelector("#cssCode").addEventListener("keyup",run);
+    document.querySelector("#jsCode").addEventListener("keyup",run);
+ 
+
+</script>
+</html>
+
